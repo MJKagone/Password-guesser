@@ -40,10 +40,10 @@ def check_tables(password):
     finnish_words = loadtxt("kaikkisanat.txt", dtype=str) # have to do some cleaning in the file for it to work
 
     print("1) Checking the most common passwords worldwide and in Finland")
-    if (password in global_passwords or 
-        password in finnish_passwords or 
-        password in male_names or 
-        password in female_names or 
+    if (password in global_passwords or
+        password in finnish_passwords or
+        password in male_names or
+        password in female_names or
         password in surnames or
         password in english_words or
         password in finnish_words or
@@ -52,9 +52,9 @@ def check_tables(password):
         password in char.capitalize(surnames) or
         password in char.capitalize(english_words) or
         password in char.capitalize(finnish_words)):
-            return True
+        return True
     return False
-      
+
 
 def check_digits(password):
     """
@@ -70,7 +70,7 @@ def check_digits(password):
     digits = "0123456789"
     print("2) Checking all digits up to")
     for length in range(1, n+1):
-        print("...%d characters" % length)
+        print(f"...{length} characters")
         for combination in product(digits, repeat=length):
             test = ''.join(combination)
             if test == password:
@@ -88,17 +88,17 @@ def check_digits_and_extended_ASCII(password):
     Returns:
         bool: True if the password matches any combination, False otherwise.
     """
-        
+
     characters = "0123456789abcdefghijklmnopqrstuvwxyzåäöüABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖÜ!\"#$€%&'()*+,-./:;<=>?@[\\]^_`{|}~"
     print("3) Checking all digits and extended ASCII up to")
     for length in range(1, n+1):
-        print("...%d characters" % length)
+        print(f"...{length} characters")
         for combination in product(characters, repeat=length):
             test = ''.join(combination)
             if test == password:
                 return True
     return False
-    
+
 
 def main():
     """
@@ -112,23 +112,26 @@ def main():
     if check_tables(password):
         duration = time() - start
         if duration < 60:
-            print("Password '" + password + "' found in " + "%.1d s" % duration)
+            print(f"Password '{password}' found in {duration} s")
         else:
-            print("Password '" + password + "' found in " + "%.1d min %.1d s" % (duration//60, duration%60))
+            print(f"Password '{password}' found in {duration//60} min {duration%60} s")
 
     elif check_digits(password):
         duration = time() - start
         if duration < 60:
-            print("Password '" + password + "' found in " + "%.1d s" % duration)
+            print(f"Password '{password}' found in {duration} s")
+
         else:
-            print("Password '" + password + "' found in " + "%.1d min %.1d s" % (duration//60, duration%60))
+            print(f"Password '{password}' found in {duration//60} min {duration%60} s")
 
     elif check_digits_and_extended_ASCII(password):
         duration = time() - start
         if duration < 60:
-            print("Password '" + password + "' found in " + "%.1d s" % duration)
+            print(f"Password '{password}' found in {duration} s")
+
         else:
-            print("Password '" + password + "' found in " + "%.1d min %.1d s" % (duration//60, duration%60))
+            print(f"Password '{password}' found in {duration//60} min {duration%60} s")
+
     else:
         print("Password not found. Program halted after exhausting all possibilities.")
 
