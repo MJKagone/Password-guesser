@@ -112,25 +112,25 @@ def main():
     if check_tables(password):
         duration = time() - start
         if duration < 60:
-            print(f"Password '{password}' found in {duration} s")
+            print(f"Password '{password}' found in {duration:.0f} s")
         else:
-            print(f"Password '{password}' found in {duration//60} min {duration%60} s")
+            print(f"Password '{password}' found in {duration//60:.0f} min {duration%60:.0f} s")
 
     elif check_digits(password):
         duration = time() - start
         if duration < 60:
-            print(f"Password '{password}' found in {duration} s")
+            print(f"Password '{password}' found in {duration:.0f} s")
 
         else:
-            print(f"Password '{password}' found in {duration//60} min {duration%60} s")
+            print(f"Password '{password}' found in {duration//60:.0f} min {duration%60:.0f} s")
 
     elif check_digits_and_extended_ASCII(password):
         duration = time() - start
         if duration < 60:
-            print(f"Password '{password}' found in {duration} s")
+            print(f"Password '{password}' found in {duration:.0f} s")
 
         else:
-            print(f"Password '{password}' found in {duration//60} min {duration%60} s")
+            print(f"Password '{password}' found in {duration//60:.0f} min {duration%60:.0f} s")
 
     else:
         print("Password not found. Program halted after exhausting all possibilities.")
