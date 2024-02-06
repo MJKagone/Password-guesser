@@ -12,3 +12,7 @@ The used lookup tables can be found at:
 
 &nbsp;
 Of course, you may also choose to use different files or omit this step entirely.
+
+&nbsp;
+
+<sub>Probably not very efficient to use Python for this in actual practise, though.</sub>
